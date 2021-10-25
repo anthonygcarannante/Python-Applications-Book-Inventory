@@ -4,15 +4,18 @@ from tkinter import *
 window=Tk()
 
 def unit_converter():
-    print(e1_value.get())
-
+    
+    # Get value from input box and convert to g, lbs, oz
     grams=float(e1_value.get())*1000
-    t1.insert(END, grams)
-
     pounds=float(e1_value.get())*2.20462
-    t2.insert(END, pounds)
-
     ozs=float(e1_value.get())*35.274
+
+    # Remove existing value from text boxes and display new calculated values
+    t1.delete("1.0", END)
+    t1.insert(END, grams)
+    t2.delete("1.0", END)
+    t2.insert(END, pounds)
+    t3.delete("1.0", END)
     t3.insert(END, ozs)
 
 # Create static text
