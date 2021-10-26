@@ -19,19 +19,22 @@ import backend
 # Stores selected value in list as event and grabs the tuple of data linked to that index entry
 def get_selected_row(event):
     # Create global variable to use outside of function, specifically into the delete_command function
-    global selected_tuple
-    index=list1.curselection()[0]
-    selected_tuple=list1.get(index)
+    try:
+        global selected_tuple
+        index=list1.curselection()[0]
+        selected_tuple=list1.get(index)
 
-    # Update text boxes with selected row
-    e1.delete(0,END)
-    e1.insert(END,selected_tuple[1])
-    e2.delete(0,END)
-    e2.insert(END,selected_tuple[2])
-    e3.delete(0,END)
-    e3.insert(END,selected_tuple[3])
-    e4.delete(0,END)
-    e4.insert(END,selected_tuple[4])
+        # Update text boxes with selected row
+        e1.delete(0,END)
+        e1.insert(END,selected_tuple[1])
+        e2.delete(0,END)
+        e2.insert(END,selected_tuple[2])
+        e3.delete(0,END)
+        e3.insert(END,selected_tuple[3])
+        e4.delete(0,END)
+        e4.insert(END,selected_tuple[4])
+    except:
+        pass
 
 # Function that iterates through each row in SQL database that is stored in a list as an output. Displays each list item in listbox.
 def view_command():
