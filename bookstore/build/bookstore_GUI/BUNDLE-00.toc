@@ -1,0 +1,3 @@
+([('bookstore_GUI',
+   '/Users/anthonycarannante/Desktop/Github_Repos/Python-Applications-Book-Inventory/bookstore/dist/bookstore_GUI',
+   'EXECUTABLE')],)
