@@ -37,7 +37,5 @@ class Database:
         self.cur.execute("UPDATE book SET title=?, author=?, year=?, isbn=? WHERE id=?", (title,author,year,isbn,id,))
         self.conn.commit()
 
-# insert("The Earth", "John Smith", 1994, 400392029)
-# delete(3)
-# update(4, "The Moon", "John Smooth", "1917", 102394959)
-# print(view())
+    def __del__(self):
+        self.conn.close()
