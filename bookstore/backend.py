@@ -50,7 +50,6 @@ def update(id, title, author, year, isbn):
     conn.commit()
     conn.close()
 
-
 connect()
 # insert("The Earth", "John Smith", 1994, 400392029)
 # delete(3)
