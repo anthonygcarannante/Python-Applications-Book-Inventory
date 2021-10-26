@@ -21,9 +21,38 @@ def create_table():
 def insert(item, quantity, price):
     conn=psycopg2.connect("dbname='database1' user='postgres' password='postgres' host='localhost' port='5432'")
     cur=conn.cursor()
-    cur.execute("INSERT INTO store VALUES('%s','%s','%s')" % (item, quantity, price))
+
+    # Two ways to insert values. The first is hacker prone, the second is cleaner and more secure
+    # cur.execute("INSERT INTO store VALUES('%s','%s','%s')" % (item, quantity, price))
+    cur.execute("INSERT INTO store VALUES(%s,%s,%s)", (item, quantity, price))
+
+    conn.commit()
+    conn.close()
+
+def view():
+    conn=psycopg2.connect("dbname='database1' user='postgres' password='postgres' host='localhost' port='5432'")
+    cur=conn.cursor()
+    cur.execute("SELECT * FROM store")
+    rows=cur.fetchall()
+    conn.close()
+    return rows
+
+def delete(item):
+    conn=psycopg2.connect("dbname='database1' user='postgres' password='postgres' host='localhost' port='5432'")
+    cur=conn.cursor()
+    cur.execute("DELETE FROM store WHERE item=%s",(item,))
+    conn.commit()
+    conn.close()
+
+def update(quantity, price, item):
+    conn=psycopg2.connect("dbname='database1' user='postgres' password='postgres' host='localhost' port='5432'")
+    cur=conn.cursor()
+    cur.execute("UPDATE store SET quantity=%s, price=%s WHERE item=%s",(quantity, price, item))
     conn.commit()
     conn.close()
 
 # create_table()
-insert("Apple",10,15)
+# insert("Banana",20,2)
+# delete('Banana')
+update(4,12,'Banana')
+print(view())
