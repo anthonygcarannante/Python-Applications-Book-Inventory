@@ -46,7 +46,7 @@ def update(quantity, price, item):
     conn.commit()
     conn.close()
 
-insert('Wine Glass', 12, 9.50)
+# insert('Wine Glass', 12, 9.50)
 # delete('Wine Glass')
 update(10, 6, "Wine Glass")
 
