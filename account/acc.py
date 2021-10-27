@@ -19,14 +19,15 @@ class Account:
 # Create inheritance classes Checking and Savings. Pass Base Class as variable into inherited class
 class Checking(Account):
 
-    def __init__(self,filepath):
+    def __init__(self,filepath,fee):
         # Call instance of Account class, so sub-class is created from Account class, passing the same parameters needed for the Account class
         Account.__init__(self, filepath)
+        self.fee=fee
 
     def transfer(self,amount):
-        self.balance=self.balance - amount
+        self.balance=self.balance - amount - self.fee
 
-checking=Checking("account/balance.txt")
+checking=Checking("account/balance.txt",1)
 print(checking.balance)
 checking.transfer(150)
 checking.commit()
