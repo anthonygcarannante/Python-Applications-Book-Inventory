@@ -16,12 +16,18 @@ class Account:
         with open(self.filepath, 'w') as file:
             file.write(str(self.balance))
 
+# Create inheritance classes Checking and Savings. Pass Base Class as variable into inherited class
+class Checking(Account):
 
-# Run class, passing the path of the text file
-account=Account("account/balance.txt")
+    def __init__(self,filepath):
+        # Call instance of Account class, so sub-class is created from Account class, passing the same parameters needed for the Account class
+        Account.__init__(self, filepath)
 
-# Print instance of balance variable
-print(account.balance) 
-account.withdraw(100)
-print(account.balance)
-account.commit()
+    def transfer(self,amount):
+        self.balance=self.balance - amount
+
+checking=Checking("account/balance.txt")
+print(checking.balance)
+checking.transfer(150)
+checking.commit()
+print(checking.balance)
